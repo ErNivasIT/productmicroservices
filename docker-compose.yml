@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+    customer-services:
+        build:
+            context: .\ProductMicroServices\ServicesGroup\CustomerServices
+            dockerfile: .\Dockerfile
+        networks:
+          - backend
+        ports:
+            - "8090:80"
+
+    product-services:
+        build:
+            context: .\ProductMicroServices\ServicesGroup\ProductServices
+            dockerfile: .\Dockerfile
+        networks:
+          - backend
+        ports:
+            - "8092:80"
+    gateway-service:
+        build:
+            context: .
+            dockerfile: .\ProductMicroServices\Gateway\Dockerfile
+        networks:
+          - frontend
+          - backend
+        ports:
+            - "8096:80"
+networks:
+    backend:
+      name: api-network
+    frontend:
+      name: gateway-network
+     
