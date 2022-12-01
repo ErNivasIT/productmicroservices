@@ -1,27 +1,55 @@
 {
-    "GlobalConfiguration": { "BaseUrl": "http://localhost:80"},
-    "Routes": [
-      {        
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:80"
+  },
+  "Routes": [
+    {
       "UpstreamPathTemplate": "/gateway/customers",
-      "UpstreamHttpMethod": ["Get"],
+      "UpstreamHttpMethod": [
+        "Get",
+        "POST"
+      ],
       "DownstreamPathTemplate": "/api/customers",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{
+      "DownstreamHostAndPorts": [
+        {
           "Host": "customer-services",
           "Port": 80
-      }]
+        }
+      ]
     },
-      {        
+    {
       "UpstreamPathTemplate": "/gateway/products",
-      "UpstreamHttpMethod": ["Get"],
+      "UpstreamHttpMethod": [
+        "Get",
+        "POST"
+      ],
       "DownstreamPathTemplate": "/api/products",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [{
+      "DownstreamHostAndPorts": [
+        {
           "Host": "product-services",
           "Port": 80
-      }]}
-]  ,
-     "FileCacheOptions": {
-        "TtlSeconds": 10
-      }
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/customerorders",
+      "UpstreamHttpMethod": [
+        "Get",
+        "POST"
+      ],
+      "DownstreamPathTemplate": "/api/customerorders",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "customer-order-services",
+          "Port": 80
+        }
+      ]
+    }
+  ],
+  "FileCacheOptions": {
+    "TtlSeconds": 10
   }
+}

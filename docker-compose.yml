@@ -18,6 +18,14 @@ services:
           - backend
         ports:
             - "8092:80"
+    customer-order-services:
+        build:
+            context: .\ProductMicroServices\ServicesGroup\OrdersServices
+            dockerfile: .\Dockerfile
+        networks:
+          - backend
+        ports:
+            - "8094:80"
     gateway-service:
         build:
             context: .
