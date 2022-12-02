@@ -6,10 +6,10 @@ ENV ASPNETCORE_URLS=http://+:80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["ProductMicroServices/Gateway/Gateway.csproj", "ProductMicroServices/Gateway/"]
-RUN dotnet restore "ProductMicroServices/Gateway/Gateway.csproj"
+COPY ["Gateway.csproj", "./"]
+RUN dotnet restore "Gateway.csproj"
 COPY . .
-WORKDIR "/src/ProductMicroServices/Gateway"
+WORKDIR "/src/."
 RUN dotnet build "Gateway.csproj" -c Release -o /app/build
 
 FROM build AS publish

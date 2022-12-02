@@ -26,6 +26,14 @@ services:
           - backend
         ports:
             - "8094:80"
+    track-order-services:
+        build:
+            context: .\ProductMicroServices\ServicesGroup\TrackOrders
+            dockerfile: .\Dockerfile
+        networks:
+          - backend
+        ports:
+            - "8098:80"
     gateway-service:
         build:
             context: .
